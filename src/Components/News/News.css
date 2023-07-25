@@ -1,0 +1,8 @@
+.card-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Create two equal-width columns */
+   /* Add some gap between the cards */
+  align-items: center;
+  align-content: center;
+}
+
