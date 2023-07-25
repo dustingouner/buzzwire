@@ -6,7 +6,7 @@ const Homepage = (props) => {
   console.log('this', props.news)
   return (
     <>
-      <Categories />
+      <Categories onCategorySelect={props.onCategorySelect}/>
       <News news={props.news}/>
     </>
   );
