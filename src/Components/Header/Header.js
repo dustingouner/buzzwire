@@ -1,12 +1,24 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import './Header.css'
-// import { Link } from 'react-router-dom'
+
 
 function Header() {
+
+  const formatDate = () => {
+    const options = { month: 'long', day: 'numeric', year: 'numeric' };
+    const today = new Date();
+    return today.toLocaleDateString(undefined, options);
+  };
+
   return (
     <header className='header'>
-      <h1 className='title'>BuzzWire</h1>
-      <h2 className='date'>July 24, 2023</h2>
+      <Link to="/" className='buzzwire-link'>
+        <h1 className='buzzwire-title'>BuzzWire</h1>
+      </Link>
+
+      
+      <h2 className='date-element'>{formatDate()}</h2>
     </header>
   )
 }

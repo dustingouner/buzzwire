@@ -1,5 +1,5 @@
 .categories-container{
-  border: 2px solid green;
+  
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -11,4 +11,7 @@ button {
   padding: 10px 20px;
   border-radius: 6px;
   cursor: pointer;
+  background-color: blue;
+  color: white;
+  font-weight: bold;
 }

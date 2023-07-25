@@ -1,0 +1,36 @@
+.news-details {
+  max-width: 600px; /* Adjust the width as needed */
+  margin: 0 auto; /* Center the content horizontally */
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+.title {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.author,
+.published-date,
+.source {
+  margin-top: 10px;
+  font-size: 16px;
+}
+
+.image {
+  width: 100%;
+  max-height: 300px; /* Adjust the height as needed */
+  object-fit: cover; /* Maintain the aspect ratio of the image */
+  margin-top: 20px;
+}
+
+.description {
+  margin-top: 20px;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+a {
+  display: block;
+  margin-top: 20px;
+}

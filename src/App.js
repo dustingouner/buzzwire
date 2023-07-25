@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import Header from './Components/Header/Header';
 import HomePage from './Components/HomePage/HomePage';
+import NewsDetails from './Components/NewsDetails/NewsDetails';
+import ErrorMessage from './Components/ErrorMessage/ErrorMessage';
 import fetchNews from './apiCalls';
 import { Route, Switch } from 'react-router-dom';
 import './App.css';
@@ -22,10 +24,16 @@ class App extends Component {
       .then((data) => {
         this.setState({ news: data.articles });
       })
-      .catch((error) => console.log(error));
-  };
-
+      .catch((error) => {
+        if (error) {
+          this.setState ({ news: [] }) 
+        } else {
+          console.log('Other error', error)
+        }
+  });
+  }
   render() {
+    const { news } = this.state
     return (
       <div>
         <Header />
@@ -34,14 +42,17 @@ class App extends Component {
             exact
             path="/"
             render={(props) => (
-              <HomePage
-                {...props}
-                news={this.state.news}
-                onCategorySelect={this.fetchNewsByCategory} // Pass the callback function
-              />
-            )}
+              <div>
+                <HomePage {...props} news={this.state.news} onCategorySelect={this.fetchNewsByCategory} />
+                {news.length === 0 && <ErrorMessage message="Failed to fetch news. Please try again later." />}
+              </div>
+              )}
+
           />
-          {/* <Route path="/news/:id" component={NewsDetails} /> */}
+          <Route
+            path="/news/:id"
+            render={(props) => <NewsDetails {...props} news={this.state.news} />}
+          />
         </Switch>
       </div>
     );
