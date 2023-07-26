@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
+import { Route, Switch } from 'react-router-dom';
 import Header from './Components/Header/Header';
 import HomePage from './Components/HomePage/HomePage';
 import NewsDetails from './Components/NewsDetails/NewsDetails';
 import ErrorMessage from './Components/ErrorMessage/ErrorMessage';
 import fetchNews from './apiCalls';
-import { Route, Switch } from 'react-router-dom';
 import './App.css';
 
 class App extends Component {
@@ -16,7 +16,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    this.fetchNewsByCategory('general'); // Fetch news initially for the 'general' category
+    this.fetchNewsByCategory('general'); 
   }
 
   fetchNewsByCategory = (category) => {
@@ -25,15 +25,14 @@ class App extends Component {
         this.setState({ news: data.articles });
       })
       .catch((error) => {
-        if (error) {
-          this.setState ({ news: [] }) 
-        } else {
-          console.log('Other error', error)
-        }
-  });
-  }
+        console.log('Error fetching news:', error);
+        this.setState({ news: [] });
+      });
+  };
+
   render() {
-    const { news } = this.state
+    const { news } = this.state;
+
     return (
       <div>
         <Header />
@@ -43,15 +42,14 @@ class App extends Component {
             path="/"
             render={(props) => (
               <div>
-                <HomePage {...props} news={this.state.news} onCategorySelect={this.fetchNewsByCategory} />
+                <HomePage {...props} news={news} onCategorySelect={this.fetchNewsByCategory} />
                 {news.length === 0 && <ErrorMessage message="Failed to fetch news. Please try again later." />}
               </div>
-              )}
-
+            )}
           />
           <Route
-            path="/news/:id"
-            render={(props) => <NewsDetails {...props} news={this.state.news} />}
+            path="/news/:index"
+            render={(props) => <NewsDetails {...props} news={news} />}
           />
         </Switch>
       </div>

@@ -36,3 +36,11 @@
   margin: 8px 0;
   color: white;
 }
+
+.article-zoom {
+  transition: transform 0.3s ease-in-out;
+}
+
+.article:hover {
+  transform: scale(1.05); /* Adjust the scale factor as desired */
+}
