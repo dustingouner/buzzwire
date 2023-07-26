@@ -8,6 +8,7 @@ function News( {news} ) {
     
       <NewsCard 
       key={index}
+      index={index}
       image={article.urlToImage}
       title={article.title}
       date={article.publishedAt}

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import './NewsCard.css'
 import defaultImage from '../assets/newspaper2.jpeg'
 
-function NewsCard( { articleId, image, title, date }  ) {
+function NewsCard( { index, image, title, date }  ) {
 
   const formatDate = (dateString) => {
     const options = { year: 'numeric', month: 'long', day: 'numeric' };
@@ -14,7 +14,7 @@ function NewsCard( { articleId, image, title, date }  ) {
   const imageSource = image ? image : defaultImage
 
   return (
-    <Link to={`/news/${encodeURIComponent(title)}`} style={{textDecoration: 'none'}}>
+    <Link to={`/news/${index}`} style={{textDecoration: 'none'}}>
     <div className="article">
       <img className="article-image" src={imageSource} alt={title} />
       <div>
