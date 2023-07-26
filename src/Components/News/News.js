@@ -4,7 +4,6 @@ import './News.css'
 
 
 function News( {news} ) {
-  console.log('news', news)
   const articleCards = news.map((article, index) => (
     
       <NewsCard 

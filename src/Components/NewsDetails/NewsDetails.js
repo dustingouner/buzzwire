@@ -3,15 +3,19 @@ import { Link } from 'react-router-dom';
 import './NewsDetails.css'
 
 function NewsDetails(props) {
-    console.log(props.match.params)
-    console.log(props.news)
+    console.log('props', props.match.params)
+    console.log('source', props.news)
   const { id } = props.match.params;
+
+  if (!props.news || props.news.length === 0) {
+    return <div>Loading...</div>; // You can add a better loading indicator if you prefer
+  }
 
   // Find the article in the state using the article ID
   const article = props.news.find((article) => article.title === id);
 
   if (!article) {
-    return <div>Loading...</div>; // Add proper handling if the article is not found
+    return <div>Article Not Found!</div>; // Add proper handling if the article is not found
   }
 
   return (

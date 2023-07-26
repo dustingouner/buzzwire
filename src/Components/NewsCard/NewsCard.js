@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import './NewsCard.css'
 import defaultImage from '../assets/newspaper2.jpeg'
 
-function NewsCard( { image, title, date } ) {
+function NewsCard( { articleId, image, title, date }  ) {
 
   const formatDate = (dateString) => {
     const options = { year: 'numeric', month: 'long', day: 'numeric' };
